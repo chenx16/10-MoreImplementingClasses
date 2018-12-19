@@ -20,10 +20,10 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_simple_t()
-    # run_test_set_colors()
-    # run_test_move_by()
-    # run_test_clone()
+    run_test_simple_t()
+    run_test_set_colors()
+    run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -161,8 +161,17 @@ class CapitalT(object):
           :type height:              int
           :type letter_thickness:    int
         """
+        self.p=rg.Point(intersection_center.x,intersection_center.y)
+        self.w=width
+        self.h=height
+        self.th=letter_thickness
+        self.h_rect=rg.Rectangle(rg.Point(intersection_center.x-width/2,intersection_center.y-letter_thickness/2),
+                                 rg.Point(intersection_center.x+width/2,intersection_center.y+letter_thickness/2))
+        self.v_rect=rg.Rectangle(rg.Point(intersection_center.x-letter_thickness/2,intersection_center.y-letter_thickness/2),
+                                 rg.Point(intersection_center.x+letter_thickness/2,intersection_center.y+height-letter_thickness/2))
+
         # ---------------------------------------------------------------------
-        # TODO: 3.
+        # done: 3.
         #   READ the above specification, including the Example.
         #   Implement this method, using the instance variables
         #      h_rect
@@ -189,8 +198,11 @@ class CapitalT(object):
         Type hints:
           :type window: rg.RoseWindow
         """
+        self.v_rect.attach_to(window)
+        self.h_rect.attach_to(window)
+        window.render()
         # ---------------------------------------------------------------------
-        # TODO: 4.
+        # done: 4.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -221,8 +233,13 @@ class CapitalT(object):
           :type fill_color:    str
           :type outline_color: str
         """
+        self.v_rect.fill_color=fill_color
+        self.v_rect.outline_color=outline_color
+        self.h_rect.fill_color=fill_color
+        self.v_rect.outline_color=outline_color
+
         # ---------------------------------------------------------------------
-        # TODO: 5.
+        # done: 5.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -254,6 +271,15 @@ class CapitalT(object):
           :type dx: int
           :type dy: int
         """
+        self.v_rect._upper_left_corner=self.v_rect._upper_left_corner.x+dx
+        self.v_rect._lower_right_corner = self.v_rect._lower_right_corner.x + dx
+        self.v_rect._upper_left_corner = self.v_rect._upper_left_corner.y + dy
+        self.v_rect._lower_right_corner = self.v_rect._lower_right_corner.y + dy
+        self.h_rect._upper_left_corner = self.h_rect._upper_left_corner.x + dx
+        self.h_rect._lower_right_corner = self.h_rect._lower_right_corner.x + dx
+        self.h_rect._upper_left_corner = self.h_rect._upper_left_corner.y + dy
+        self.h_rect._lower_right_corner = self.h_rect._lower_right_corner.y + dy
+
         # ---------------------------------------------------------------------
         # TODO: 6.
         #   READ the above specification, including the Example.
@@ -287,6 +313,7 @@ class CapitalT(object):
         Type hints:
           :rtype: CapitalT
         """
+        return self(self.p,self.w,self.h,self.th)
         # ---------------------------------------------------------------------
         # TODO: 7.
         #   READ the above specification, including the Example.
