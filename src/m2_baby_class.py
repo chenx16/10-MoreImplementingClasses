@@ -45,7 +45,7 @@ class Baby(object):
     def __init__(self,name):
         print('Hello baby '+name+'!')
         self.x=name
-        self.n=0
+        self.n = 0
 
     def feed_baby(self):
         print('Thank you for feeding baby{}!'.format(self.x))
