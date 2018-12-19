@@ -271,17 +271,18 @@ class CapitalT(object):
           :type dx: int
           :type dy: int
         """
-        self.v_rect._upper_left_corner=self.v_rect._upper_left_corner.x+dx
-        self.v_rect._lower_right_corner = self.v_rect._lower_right_corner.x + dx
-        self.v_rect._upper_left_corner = self.v_rect._upper_left_corner.y + dy
-        self.v_rect._lower_right_corner = self.v_rect._lower_right_corner.y + dy
-        self.h_rect._upper_left_corner = self.h_rect._upper_left_corner.x + dx
-        self.h_rect._lower_right_corner = self.h_rect._lower_right_corner.x + dx
-        self.h_rect._upper_left_corner = self.h_rect._upper_left_corner.y + dy
-        self.h_rect._lower_right_corner = self.h_rect._lower_right_corner.y + dy
+        self.v_rect.corner_1.x=self.v_rect.corner_1.x+dx
+        self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
+        self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
+        self.h_rect.corner_2.x = self.h_rect.corner_2 .x+ dx
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
+
 
         # ---------------------------------------------------------------------
-        # TODO: 6.
+        # done: 6.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -313,9 +314,11 @@ class CapitalT(object):
         Type hints:
           :rtype: CapitalT
         """
-        return self(self.p,self.w,self.h,self.th)
+        new=CapitalT(self.p,self.w,self.h,self.th)
+        new.set_colors(self.v_rect.fill_color, self.v_rect.outline_color)
+        return new
         # ---------------------------------------------------------------------
-        # TODO: 7.
+        # done: 7.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
